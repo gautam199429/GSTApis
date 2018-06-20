@@ -1,5 +1,7 @@
 package com.codecube.gst.controller;
 
+import java.net.URL;
+
 import org.hibernate.SessionFactory;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -35,7 +37,7 @@ public class GSTRSaveSubmitController {
 	@Autowired
 	EncryptionUtil encutil;
 	
-	@RequestMapping(value ="/saveandsubmit", method= RequestMethod.PUT, headers = "Content-type=application/json")
+	@RequestMapping(value ="/saveandsubmit", method= RequestMethod.GET)
 	public JSONObject OtpRequest(@RequestBody OTPModel otp,
 			@RequestHeader("Asp-Id") String asp_id,
 			@RequestHeader("Asp-Secret") String asp_secret,
@@ -55,15 +57,37 @@ public class GSTRSaveSubmitController {
 		String auth_token = (String) json.get("auth_token");
 		String sek = (String) json.get("sek");
 		@SuppressWarnings("static-access")
-		byte[] authEK = app.decrypt(sek, app.decodeBase64StringTOByte("Q/XkhYUUbvfg6wCdxrPzPqMb4SPMrYRXQ5w2WVnxw90="));
+		byte[] authEK = app.decrypt(sek, app.decodeBase64StringTOByte(app_key));
 	try {
-		
-		
-		
-	} catch (Exception e) {
+		URL url = new URL(BASE_URL);	
+	} 
+	catch (Exception e) {
 		// TODO: handle exception
 	}
 		
+		return null;
+		
+	}
+	
+	public JSONObject submit()
+	{
+		try {
+			
+		} 
+		catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
+		
+	}
+	
+	public JSONObject status()
+	{
+		try {
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		return null;
 		
 	}

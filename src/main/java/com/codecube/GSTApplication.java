@@ -37,7 +37,7 @@ public class GSTApplication  extends SpringBootServletInitializer {
 	@SuppressWarnings("deprecation")
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder().title("GST APIs").description("GST UTILITY APIS IN JAVA WITH SPRING BOOT")
-				.termsOfServiceUrl("http://localhost:8096/").contact("Goutam Kumar Sah").license("GAUTAM199429@GMAIL.COM").version("2.0, Base Url:- http://www.devapi.gstsystem.co.in").build();
+				.termsOfServiceUrl("http://localhost:8096").contact("Goutam Kumar Sah").license("GAUTAM199429@GMAIL.COM").version("2.0, Base Url:- https://apiuat.spicegsp.com").build();
 	}
 	
 }

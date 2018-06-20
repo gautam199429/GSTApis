@@ -42,10 +42,11 @@ public class AuthTokenControllerNew {
 	private static final String BASE_URL = "https://apiuat.spicegsp.com/taxpayerapi/v0.2/authenticate";
 	
 
+	@SuppressWarnings("unchecked")
 	@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@RequestMapping(value ="/authtoken", method= RequestMethod.GET)
-	public JSONObject OtpRequest(
+	public JSONObject AuthRequest(
 			@RequestHeader("Asp-Id") String asp_id,
 			@RequestHeader("Asp-Secret") String asp_secret,
 			@RequestHeader("state-cd") String state,

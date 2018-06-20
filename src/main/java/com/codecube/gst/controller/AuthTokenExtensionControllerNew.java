@@ -35,7 +35,7 @@ public class AuthTokenExtensionControllerNew {
 	@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@RequestMapping(value ="/authextension", method= RequestMethod.GET)
-	public JSONObject OtpRequest(
+	public JSONObject authExtensionRequest(
 			@RequestHeader("Asp-Id") String asp_id,
 			@RequestHeader("Asp-Secret") String asp_secret,
 			@RequestHeader("state-cd") String state,

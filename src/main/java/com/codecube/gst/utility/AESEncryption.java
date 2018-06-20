@@ -144,7 +144,8 @@ public class AESEncryption {
      * Generation of Sign data for GSTR1 RETFILE from PAN or OTP
      * Decodeing of data and rek of the RETFILE, RETSTATUS, RETSUBMIT, RETSAVE and others where we get the data and rek in response.
      */
-    private static void encJsonAndGenHmac()
+    @SuppressWarnings("unused")
+	private static void encJsonAndGenHmac()
     
     {
     	
@@ -175,7 +176,7 @@ public class AESEncryption {
     		 * GSTR3B payload
     		 * This is a sample payload.
     		 */
-    		@SuppressWarnings("unused")
+    		
 			String gstrb3="{\"gstin\": \"27BCAMH0498C1Z3\",\"ret_period\": \"072017\",\"sup_details\": {\"osup_det\": {\"txval\": 2000,\"iamt\": 360,\"camt\": 0,\"samt\":0,\"csamt\":0},\"osup_zero\": {\"txval\": 2000,\"iamt\": 0,\"camt\": 0,\"samt\": 0,\"csamt\": 0},\"osup_nil_exmp\": {\"txval\": 0,\"iamt\": 0,\"camt\": 0,\"samt\": 0,\"csamt\": 0},\"isup_rev\": {\"txval\": 0,\"iamt\": 0,\"camt\": 0,\"samt\": 0,\"csamt\": 0},\"osup_nongst\": {\"txval\": 0,\"iamt\":0,\"camt\": 0,\"samt\": 0,\"csamt\": 0}},\"inter_sup\": {\"unreg_details\": [{\"pos\": \"35\",\"txval\": 100,\"iamt\": 90}],\"comp_details\":[{\"pos\": \"35\",\"txval\": 100,\"iamt\": 90}],\"uin_details\": [{\"pos\": \"35\",\"txval\": 100,\"iamt\": 90}]},\"itc_elg\": {\"itc_avl\": [\r\n" + 
     				"{\"ty\": \"IMPG\",\"iamt\": 0,\"camt\": 0,\"samt\": 0,\"csamt\": 0},{\"ty\": \"IMPS\",\"iamt\": 0,\"camt\": 0,\"samt\": 0,\"csamt\": 0},{\"ty\": \"ISRC\",\"iamt\":0,\"camt\": 0,\"samt\": 0,\"csamt\": 0},{\"ty\": \"ISD\",\"iamt\": 0,\"camt\": 0,\"samt\": 0,\"csamt\": 0},{\"ty\": \"OTH\",\"iamt\": 200,\"camt\": 100,\"samt\": 60,\"csamt\": 0}],\"itc_rev\": [{\"ty\": \"RUL\",\"iamt\": 0,\"camt\": 0,\"samt\": 0,\"csamt\": 0},{\"ty\": \"OTH\",\"iamt\": 0,\"camt\": 0,\"samt\": 0,\"csamt\": 0}],\"itc_net\": {\"iamt\": 200,\"camt\": 100,\"samt\": 60,\"csamt\": 0},\"itc_inelg\": [{\"ty\": \"RUL\",\"iamt\": 0,\"camt\": 0,\"samt\": 0,\"csamt\": 0},{\"ty\": \"OTH\",\"iamt\": 0,\"camt\": 0,\"samt\": 0,\"csamt\": 0}]},\"inward_sup\": \"isup_details\": [\r\n" + 
     				"{\"ty\": \"GST\",\"inter\": 0,\"intra\": 0},{\"ty\": \"NONGST\",\"inter\": 0,\"intra\": 0}]}\"intr_ltfee\": {\"intr_details\": {\"iamt\": 0,\"camt\": 0,\"samt\": 0,\"csamt\": 0}},\"tx_pmt\": {\"tx_py\": [{\"tran_desc\": \"Other than Reverse Charge\",\"liab_ldg_id\": 1530,\"trans_typ\": 30002,\"igst\": {\"tx\": 0,\"intr\": 0,\"fee\": 0},\"cgst\": {\"tx\": 0,\"intr\": 0,\"fee\": 0},\"sgst\": {\"tx\": 0,\"intr\": 0,\"fee\": 0},\"cess\": {\"tx\": 0,\"intr\": 0,\"fee\": 0}},{\"tran_desc\": \"Reverse Charge\",\"liab_ldg_id\": 1531,\"trans_typ\": 30003,\"igst\": {\"tx\": 0,\"intr\": 0,\"fee\": 0},\"cgst\": {\"tx\": 0,\"intr\": 0,\"fee\": 0},\"sgst\": {\"intr\": 0,\"fee\": 0},\"cess\": {\"tx\": 0,\"intr\": 0,\"fee\": }}],\"pdcash\": [],\"pditc\":{\"liab_ldg_id\":1530,\"trans_typ\": 30002,\"i_pdi\": 200,\"i_pdc\": 100,\"i_pds\": 60,\"c_pdi\": 0,\"c_pdc\": 0,\"s_pdi\": 0,\"s_pds\": 0,\"cs_pdcs\": 0}}}";
@@ -415,10 +416,10 @@ public class AESEncryption {
      * Main
      * @param args
      * @throws Exception
-     */
-	public static void main(String args[])throws Exception{
-		//produceSampleData();
-		encJsonAndGenHmac();
-		
-	}
+//     */
+//	public static void main(String args[])throws Exception{
+//		//produceSampleData();
+//		encJsonAndGenHmac();
+//		
+//	}
 }

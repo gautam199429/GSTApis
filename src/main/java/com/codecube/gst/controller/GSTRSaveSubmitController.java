@@ -38,7 +38,7 @@ public class GSTRSaveSubmitController {
 	EncryptionUtil encutil;
 	
 	@RequestMapping(value ="/saveandsubmit", method= RequestMethod.GET)
-	public JSONObject OtpRequest(@RequestBody OTPModel otp,
+	public JSONObject saveSubmitRequest(
 			@RequestHeader("Asp-Id") String asp_id,
 			@RequestHeader("Asp-Secret") String asp_secret,
 			@RequestHeader("state-cd") String state,
@@ -68,28 +68,4 @@ public class GSTRSaveSubmitController {
 		return null;
 		
 	}
-	
-	public JSONObject submit()
-	{
-		try {
-			
-		} 
-		catch (Exception e) {
-			// TODO: handle exception
-		}
-		return null;
-		
-	}
-	
-	public JSONObject status()
-	{
-		try {
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return null;
-		
-	}
-
 }

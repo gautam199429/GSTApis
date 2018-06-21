@@ -14,19 +14,21 @@ import redis.clients.jedis.Jedis;
 @Repository
 public class RedisConfig {
 	
-	@SuppressWarnings("resource")
+	
+	private final static String host = "localhost";
+	static int port = 6379;
+	static Jedis jedis = new Jedis(host,port);
+	
 	public static String redisGetauthtoken(String gstn)
 	{
 		String auth_token = "null";
 		String response = "{\"auth_token\":\"null\"}";
 		try {
-			String host = "localhost";
-			int port = 6379;
-			Jedis jedis = new Jedis(host,port);
 			response = jedis.get(gstn+"authresponse");
 			JSONParser parser1 = new JSONParser();
 			JSONObject json = (JSONObject) parser1.parse(response);
 			auth_token = (String) json.get("auth_token");
+			return auth_token;
 		}
 		catch(Exception e)
 		{
@@ -37,15 +39,12 @@ public class RedisConfig {
 		return auth_token;
 		
 	}
-	@SuppressWarnings("resource")
 	public static String redisGetappkey(String gstn)
 	{
-		String response = "null";
+		String response = "Generate App Key";
 		try {
-			String host = "localhost";
-			int port = 6379;
-			Jedis jedis = new Jedis(host,port);
 			response = jedis.get(gstn+"encodedappkey");
+			return response;
 		}
 		catch(Exception e)
 		{
@@ -56,19 +55,16 @@ public class RedisConfig {
 		return response;
 		
 	}
-	@SuppressWarnings("resource")
 	public static String redisGetsek(String gstn)
 	{
 		String sek = "null";
-		String response = "{\"auth_token\":\"null\"}";
+		String response = "{\"sek\":\"null\"}";
 		try {
-			String host = "localhost";
-			int port = 6379;
-			Jedis jedis = new Jedis(host,port);
 			response = jedis.get(gstn+"authresponse");
 			JSONParser parser1 = new JSONParser();
 			JSONObject json = (JSONObject) parser1.parse(response);
 			sek = (String) json.get("sek");
+			return sek;
 		}
 		catch(Exception e)
 		{
@@ -80,15 +76,27 @@ public class RedisConfig {
 		
 	}
 	
-	@SuppressWarnings("resource")
 	public static String redisGetEncryptedAppkey(String gstn)
+	{
+		String response = "Generate App Key";
+		try {
+			response = jedis.get(gstn+"encryptedappkey");
+			return response;
+		}
+		catch(Exception e)
+		{
+			System.out.println("Error in Connecting the Redis Server");
+			System.out.println(e);
+		}
+		
+		return response;
+		
+	}
+	public static String redisSetEncryptedAppkey(String gstn, String value)
 	{
 		String response = "null";
 		try {
-			String host = "localhost";
-			int port = 6379;
-			Jedis jedis = new Jedis(host,port);
-			response = jedis.get(gstn+"encryptedappkey");
+			jedis.set(gstn+"encryptedappkey", value);
 		}
 		catch(Exception e)
 		{
@@ -100,4 +108,26 @@ public class RedisConfig {
 		
 	}
 	
+	
+	public static String redisSetEncodedAppkey(String gstn, String value)
+	{
+		String response = "null";
+		try {
+			jedis.set(gstn+"encodedappkey", value);
+		}
+		catch(Exception e)
+		{
+			System.out.println("Error in Connecting the Redis Server");
+			System.out.println(e);
+		}
+		
+		return response;
+		
+	}
+	public static void main(String[] args) {
+		String sek = redisGetsek("27BCAMH0498C1Z3");
+		System.out.println(sek);
+		String auth = redisGetauthtoken("27BCAMH0498C1Z3");
+		System.out.println(auth);
+	}
 }

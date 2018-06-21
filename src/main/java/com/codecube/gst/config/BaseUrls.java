@@ -1,6 +1,5 @@
 package com.codecube.gst.config;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Repository;
 
 @Repository

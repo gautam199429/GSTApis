@@ -64,10 +64,15 @@ public class AuthTokenControllerNew {
 					
 					 @SuppressWarnings("resource")
 					Jedis jedis = new Jedis("localhost",6379);
-					 String encodedappkey = jedis.get(gstin+"encodedappkey");
+					 
+					 @SuppressWarnings("static-access")
+					String encodedappkey = red.redisGetappkey(gstin);
 					 System.out.println(encodedappkey);
-					 String encryptedappkey = jedis.get(gstin+"encryptedappkey");
+					 
+					 @SuppressWarnings("static-access")
+					 String encryptedappkey = red.redisGetEncryptedAppkey(gstin);
 					 System.out.println(encryptedappkey);
+					 
 					 if (encodedappkey.equals(null)) {
 						JSONParser parser1 = new JSONParser();
 						JSONObject json = (JSONObject) parser1.parse(result);
@@ -116,14 +121,27 @@ public class AuthTokenControllerNew {
 								}
 							in.close();
 							result =response.toString();
-							jedis.set(gstin+"authresponse", result);
+							//jedis.set(gstin+"authresponse", result);
 							JSONParser parser1 = new JSONParser();
 							JSONObject json = (JSONObject) parser1.parse(result);
-							java.util.Date date=new java.util.Date();
-							String created_at = date.toString();
-							json.put("created_at", created_at);
-							jedis.set(gstin+"authresponse", json.toString());
-							return json;
+							String status_cd = (String) json.get("status_cd");
+//							java.util.Date date=new java.util.Date();
+//							String created_at = date.toString();
+//							json.put("created_at", created_at);
+//							jedis.set(gstin+"authresponse1", json.toString());
+//							return json;
+							if (status_cd.equals("1")) {
+								java.util.Date date=new java.util.Date();
+								String created_at = date.toString();
+								json.put("created_at", created_at);
+								jedis.set(gstin+"authresponse", json.toString());
+								return json;
+							} 
+							else 
+							{
+								jedis.set(gstin+"authresponseError", result);
+								return json;
+							}
 					 }
 					 
 				} 

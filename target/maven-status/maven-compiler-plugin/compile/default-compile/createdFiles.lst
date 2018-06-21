@@ -6,6 +6,8 @@ com\codecube\gst\controller\GSTRSaveSubmitController.class
 com\codecube\gst\controller\OTPControllerNew.class
 com\codecube\gst\utility\Crypto.class
 com\codecube\gst\config\RedisConfig.class
+com\codecube\gst\controller\GSTRSave.class
+com\codecube\gst\controller\GSTRCheckStatus.class
 com\codecube\gst\entity\GSTRSaveModel.class
 com\codecube\gst\entity\GSTRSubmitModel.class
 com\codecube\gst\utility\PasswordUtility.class
@@ -18,3 +20,4 @@ com\codecube\gst\utility\EncryptionUtil.class
 com\codecube\gst\entity\OTPModel.class
 com\codecube\gst\controller\AuthTokenExtensionControllerNew.class
 com\codecube\gst\controller\GSTRFileController.class
+com\codecube\gst\controller\GSTRSubmit.class

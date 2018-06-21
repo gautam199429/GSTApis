@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.codecube.gst.config.RedisConfig;
 import com.codecube.gst.entity.OTPModel;
 import com.codecube.gst.utility.AESEncryption;
 import com.codecube.gst.utility.EncryptionUtil;
@@ -32,6 +33,9 @@ public class GSTRSaveSubmitController {
 	SessionFactory sessionFactory;
 	
 	@Autowired
+	RedisConfig redc;
+	
+	@Autowired
 	AESEncryption app;
 	
 	@Autowired
@@ -49,15 +53,14 @@ public class GSTRSaveSubmitController {
 			@RequestHeader("GSTN") String gstn,
 			@RequestHeader("ret_period") String ret_period)throws Exception
 	{
-		Jedis jedis = new Jedis("localhost",6379);
-		String response = jedis.get(gstn+"authresponse");
-		String app_key = jedis.get(gstn+"encodedappkey");
-		JSONParser parser1 = new JSONParser();
-		JSONObject json = (JSONObject) parser1.parse(response);
-		String auth_token = (String) json.get("auth_token");
-		String sek = (String) json.get("sek");
 		@SuppressWarnings("static-access")
-		byte[] authEK = app.decrypt(sek, app.decodeBase64StringTOByte(app_key));
+		String sek = redc.redisGetsek(gstn);
+		
+		@SuppressWarnings("static-access")
+		String appkey = redc.redisGetappkey(gstn);
+		
+		@SuppressWarnings("static-access")
+		String auth_token = redc.redisGetauthtoken(gstn);
 	try {
 		URL url = new URL(BASE_URL);	
 	} 

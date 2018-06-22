@@ -37,17 +37,21 @@ private static final String BASE_URL = "https://apiuat.spicegsp.com/taxpayerapi/
 			String state_cd,
 			String txns,
 			String payload,
-			String hmac) throws ParseException
+			String sign,
+			String otp,
+			String pan) throws ParseException
 	{
 		String result = "{\"status_cd\":\"0\",\"error\":\"Please Check Your Headerssave\"}";
 		
 		try {
 			URL url = new URL(BASE_URL);
+			String pan1=""+pan+""+"|"+""+otp+"";
 			HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
-			String requestpayloadr ="{\"action\":\"RETSUBMIT\",\"data\":\""+payload+"\",\"hmac\":\""+hmac+"\"}";
+			String requestpayloadr ="{\"action\":\"RETFILE\",\"data\":\""+payload+"\",\"sign\":\""+sign+"\",\"st\":\"EVC\",\"sid\":\""+pan1+"\"}";
 			System.out.println(requestpayloadr);
 			System.out.println("Submit Encrypted Apyload"+payload);
-			System.out.println("Submit Encrypted Apyload HMAC"+hmac);byte[] out = requestpayloadr.getBytes(StandardCharsets.UTF_8);
+			System.out.println("Submit Encrypted Apyload HMAC"+sign);
+			byte[] out = requestpayloadr.getBytes(StandardCharsets.UTF_8);
 			conn.setRequestMethod("POST");
 			 conn.setRequestProperty("Content-Type",javax.ws.rs.core.MediaType.APPLICATION_JSON );
 			 conn.setRequestProperty("Asp-Id", asp_id);

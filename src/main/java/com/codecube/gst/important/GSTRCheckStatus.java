@@ -34,9 +34,10 @@ public class GSTRCheckStatus {
 			String ref_id) throws ParseException
 	{
 		
-		String result = "{\"status_cd\":\"0\",\"error\":\"Please Check Your Headers\"}";
+		String result = "{\"status_cd\":\"0\",\"error\":\"Please Check Your Headerssssss\"}";
 		try {
-			URL url = new URL("https://apiuat.spicegsp.com/taxpayerapi/v1.0/returns?gstin="+gstin+"&ret_period="+ret_period+"&action=RETSTATUS&"+ref_id+"");
+			URL url = new URL("https://apiuat.spicegsp.com/taxpayerapi/v1.0/returns?gstin="+gstin+"&ret_period="+ret_period+"&action=RETSTATUS&ref_id="+ref_id+"");
+			System.out.println(url);
 			HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			 conn.setRequestProperty("Content-Type",javax.ws.rs.core.MediaType.APPLICATION_JSON );
@@ -49,9 +50,7 @@ public class GSTRCheckStatus {
 			 conn.setRequestProperty("username", username);
 			 conn.setRequestProperty("GSTIN", gstin);
 			 conn.setRequestProperty("ret_period", ret_period);
-			 conn.setRequestProperty("auth_token", auth_token);
-			 conn.setDoInput(true);
-			 conn.setDoOutput(true);
+			 conn.setRequestProperty("auth-token", auth_token);
 			 BufferedReader in = new BufferedReader(
 					 new InputStreamReader(conn.getInputStream()));
 						String inputLine;
@@ -69,6 +68,7 @@ public class GSTRCheckStatus {
 							String rek = (String) json.get("rek");
 							@SuppressWarnings("static-access")
 							String decode = app.decodeData(data, rek, sek, appkey);
+							System.out.println(decode);
 							JSONParser decodeparser = new JSONParser();
 							JSONObject decodedjson = (JSONObject) decodeparser.parse(decode);
 							return decodedjson;

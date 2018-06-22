@@ -17,7 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication(exclude = HibernateJpaAutoConfiguration.class)
 //@SpringBootApplication
 @EnableSwagger2
-//@EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class})
+//@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class GSTApplication  extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {

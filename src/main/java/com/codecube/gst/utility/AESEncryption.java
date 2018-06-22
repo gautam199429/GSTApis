@@ -264,9 +264,9 @@ public class AESEncryption {
     	
     }
     
-    public static String generatHmacOfPayloda(String encodedpayload, String sek, String appkey) throws InvalidKeyException, IllegalBlockSizeException, BadPaddingException, IOException, Exception
+    public static String generatHmacOfPayloda(String payload, String sek, String appkey) throws InvalidKeyException, IllegalBlockSizeException, BadPaddingException, IOException, Exception
     {
-    	String hmackey = AESEncryption.generateHmac(AESEncryption.encodedjson(encodedpayload), AESEncryption.authEk(sek, appkey));
+    	String hmackey = AESEncryption.generateHmac(AESEncryption.encodedjson(payload), AESEncryption.authEk(sek, appkey));
 		return hmackey;
     	
     }
@@ -327,7 +327,11 @@ public class AESEncryption {
 //     */
 //	public static void main(String args[])throws Exception{
 //		//produceSampleData();
-//		encJsonAndGenHmac();
+//		//encJsonAndGenHmac();
+//		String appkey = AESEncryption.generateSecureKey();
+//		System.out.println(appkey);
+//		String encryptedappkey = EncryptionUtil.generateEncAppkey(AESEncryption.decodeBase64StringTOByte(appkey));
+//		System.out.println(encryptedappkey);
 //		
 //	}
 }

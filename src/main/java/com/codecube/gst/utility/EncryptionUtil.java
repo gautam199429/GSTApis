@@ -28,6 +28,11 @@ public class EncryptionUtil {
 	 * Enable the below publicKeyUrl1 for Sandbox
 	 */
 	public static String publicKeyUrl1 ="D:/software/GSTN_G2A_SANDBOX_UAT_public.cer";
+	
+	/**
+	 * FOR LINUX DEPLOYMENT
+	 */
+	//public static String publicKeyUrl1 ="/home/software/GSTN_G2A_SANDBOX_UAT_public.cer";
 	/**
 	 * GSTN Production Key
 	 * @ExpireyDate 02/08/2018

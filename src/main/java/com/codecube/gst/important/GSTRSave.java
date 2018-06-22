@@ -80,8 +80,11 @@ public class GSTRSave {
 							String data = (String) json.get("data");
 							String rek = (String) json.get("rek");
 							@SuppressWarnings("static-access")
-							String ref_id = app.decodeData(data, rek, sek, appkey);
-							json.put("saveref_id", ref_id);
+							String saveresponse = app.decodeData(data, rek, sek, appkey);
+							JSONParser p = new JSONParser();
+							JSONObject jsonp = (JSONObject) p.parse(saveresponse);
+							String reference_id = (String) jsonp.get("reference_id");
+							json.put("reference_id", reference_id);
 							return json;
 						} else 
 						{

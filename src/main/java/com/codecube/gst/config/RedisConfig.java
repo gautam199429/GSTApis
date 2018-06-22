@@ -35,9 +35,7 @@ public class RedisConfig {
 			System.out.println("Error in Connecting the Redis Servesr");
 			System.out.println(e);
 		}
-		
 		return auth_token;
-		
 	}
 	public static String redisGetappkey(String gstn)
 	{
@@ -51,9 +49,7 @@ public class RedisConfig {
 			System.out.println("Error in Connecting the Redis Server");
 			System.out.println(e);
 		}
-		
 		return response;
-		
 	}
 	public static String redisGetsek(String gstn)
 	{
@@ -71,11 +67,8 @@ public class RedisConfig {
 			System.out.println("Error in Connecting the Redis Servesr");
 			System.out.println(e);
 		}
-		
-		return sek;
-		
+		return sek;	
 	}
-	
 	public static String redisGetEncryptedAppkey(String gstn)
 	{
 		String response = "Generate App Key";
@@ -88,9 +81,7 @@ public class RedisConfig {
 			System.out.println("Error in Connecting the Redis Server");
 			System.out.println(e);
 		}
-		
 		return response;
-		
 	}
 	public static String redisSetEncryptedAppkey(String gstn, String value)
 	{
@@ -103,12 +94,8 @@ public class RedisConfig {
 			System.out.println("Error in Connecting the Redis Server");
 			System.out.println(e);
 		}
-		
-		return response;
-		
-	}
-	
-	
+		return response;	
+	}	
 	public static String redisSetEncodedAppkey(String gstn, String value)
 	{
 		String response = "null";
@@ -120,14 +107,7 @@ public class RedisConfig {
 			System.out.println("Error in Connecting the Redis Server");
 			System.out.println(e);
 		}
-		
 		return response;
-		
 	}
-	public static void main(String[] args) {
-		String sek = redisGetsek("27BCAMH0498C1Z3");
-		System.out.println(sek);
-		String auth = redisGetauthtoken("27BCAMH0498C1Z3");
-		System.out.println(auth);
-	}
+	
 }

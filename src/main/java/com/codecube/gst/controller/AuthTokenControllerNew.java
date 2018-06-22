@@ -121,15 +121,9 @@ public class AuthTokenControllerNew {
 								}
 							in.close();
 							result =response.toString();
-							//jedis.set(gstin+"authresponse", result);
 							JSONParser parser1 = new JSONParser();
 							JSONObject json = (JSONObject) parser1.parse(result);
 							String status_cd = (String) json.get("status_cd");
-//							java.util.Date date=new java.util.Date();
-//							String created_at = date.toString();
-//							json.put("created_at", created_at);
-//							jedis.set(gstin+"authresponse1", json.toString());
-//							return json;
 							if (status_cd.equals("1")) {
 								java.util.Date date=new java.util.Date();
 								String created_at = date.toString();

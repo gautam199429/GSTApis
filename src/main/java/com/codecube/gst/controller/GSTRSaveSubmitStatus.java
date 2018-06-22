@@ -60,28 +60,7 @@ public class GSTRSaveSubmitStatus {
 		String appkey = red.redisGetappkey(gstin);
 		@SuppressWarnings("static-access")
 		String auth_token = red.redisGetauthtoken(gstin);
-		try {
-			String encpayload = "";
-			String hmac = "";
-			JSONObject save = gstsave.gstrSave(sek, auth_token, appkey, asp_id, asp_secret, username, ip_usr, host, gstin, ret_period, state, txn, encpayload, hmac);
-			String status_cd = (String) save.get("status_cd");
-			String ref_id = (String) save.get("ref_id");
-			if (status_cd.equals("1")) {
-				JSONObject checkstatus = gstcheckstatus.gstCheckStatus(sek, auth_token, appkey, asp_id, asp_secret, username, ip_usr, host, gstin, ret_period, state, txn, ref_id);
-				String checkstatus_cd = (String) checkstatus.get("status_cd");
-				if (checkstatus_cd.equals("P")) {
-					
-					
-				} else {
-
-				}
-				
-			} else {
-					return save;
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+		
 		return null;
 		
 	}

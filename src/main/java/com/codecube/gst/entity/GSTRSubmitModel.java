@@ -3,8 +3,6 @@
  * @date   18/06/2018
  */
 
-
-
 package com.codecube.gst.entity;
 
 import io.swagger.annotations.ApiModelProperty;

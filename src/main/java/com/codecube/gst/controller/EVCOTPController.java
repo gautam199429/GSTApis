@@ -1,3 +1,9 @@
+/**
+ * @author gautam kumar sah
+ * @date 21-06-2018
+ */
+
+
 package com.codecube.gst.controller;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -10,5 +16,7 @@ import io.swagger.annotations.Api;
 @CrossOrigin
 @Api(value="OTP", description="OTP Generation")
 public class EVCOTPController {
+	
+	
 
 }

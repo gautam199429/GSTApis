@@ -68,8 +68,6 @@ public class OTPControllerNew {
 			Jedis jedis = new Jedis("localhost",6379);
 			jedis.set(gstin+"encodedappkey",appkey);
 			jedis.set(gstin+"encryptedappkey",encryptedappkey);
-			
-			
 			URL url = new URL(BASE_URL);
 			HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
 			String requestpayloadr ="{\"action\":\"OTPREQUEST\",\"app_key\":\""+encryptedappkey+"\",\"username\":\""+username+"\"}";

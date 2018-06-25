@@ -1,4 +1,5 @@
 com\codecube\gst\entity\AuthTokenModel.class
+com\codecube\gst\controller\GSTREVCOTPController.class
 com\codecube\gst\important\GSTRSummeyData.class
 com\codecube\GSTApplication.class
 com\codecube\gst\config\BaseUrls.class
@@ -8,8 +9,9 @@ com\codecube\gst\important\GSTRSave.class
 com\codecube\gst\entity\AuthExtensionModel.class
 com\codecube\gst\entity\GSTRFileModel.class
 com\codecube\gst\controller\AuthTokenControllerNew.class
+com\codecube\gst\important\GSTREVCOtp.class
 com\codecube\gst\entity\OTPModel.class
-com\codecube\gst\controller\EVCOTPController.class
+com\codecube\gst\controller\GSTRFileController.class
 com\codecube\gst\config\RedisConfig.class
 com\codecube\gst\entity\GSTRSubmitModel.class
 com\codecube\gst\config\HibernateConfig.class

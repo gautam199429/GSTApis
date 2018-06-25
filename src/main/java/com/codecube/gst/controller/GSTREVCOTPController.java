@@ -58,7 +58,8 @@ public class GSTREVCOTPController {
 		@SuppressWarnings("static-access")
 		String auth_token = red.redisGetauthtoken(gstin);
 		try {
-			URL url = new URL("https://apiuat.spicegsp.com/taxpayerapi/v1.0/returns?gstin="+gstin+"&action=EVC&pan="+pan+"&form_type="+form_type+"");
+			URL url = new URL("https://apiuat.spicegsp.com/taxpayerapi/v0.2/authenticate?gstin="+gstin+"&action=EVCOTP&pan="+pan+"&form_type="+form_type+"");
+//			https://apiuat.spicegsp.com/taxpayerapi/v1.0/authenticate?gstin=27BABMH5613A1ZJ&action=EVCOTP&pan=AHWPB0871H&form_type=R1
 			System.out.println(url);
 			HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
@@ -73,10 +74,14 @@ public class GSTREVCOTPController {
 			 conn.setRequestProperty("GSTIN", gstin);
 			 conn.setRequestProperty("ret_period", ret_period);
 			 conn.setRequestProperty("auth-token", auth_token);
+			 System.out.println("HEADERS SEND");
+			 conn.connect();
+			 System.out.println(conn.getResponseCode());
 			 BufferedReader in = new BufferedReader(
 					 new InputStreamReader(conn.getInputStream()));
 						String inputLine;
 						StringBuffer response = new StringBuffer();
+						System.out.println("1236547");
 						while ((inputLine = in.readLine()) != null) {
 							response.append(inputLine);
 						}

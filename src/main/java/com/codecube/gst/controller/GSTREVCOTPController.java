@@ -50,11 +50,7 @@ public class GSTREVCOTPController {
 			@RequestHeader("pan") String pan) throws ParseException
 	
 	{
-		String result = "{\"status_cd\":\"0\",\"error\":\"Please Check Your Headerssssss\"}";
-		@SuppressWarnings("static-access")
-		String sek = red.redisGetsek(gstin);
-		@SuppressWarnings("static-access")
-		String appkey = red.redisGetappkey(gstin);
+		String result = "{\"status_cd\":\"0\",\"error\":\"Please Check Your Headers\"}";
 		@SuppressWarnings("static-access")
 		String auth_token = red.redisGetauthtoken(gstin);
 		try {

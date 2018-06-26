@@ -26,7 +26,7 @@ import io.swagger.annotations.Api;
 @RestController
 @RequestMapping("/taxpayerapi")
 @CrossOrigin
-@Api(value="OTP", description="OTP Generation")
+@Api(value="Auth Token", description="Auth Token Controller")
 public class AuthTokenControllerNew {
 	
 	@Autowired

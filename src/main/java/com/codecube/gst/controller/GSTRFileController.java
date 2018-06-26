@@ -23,7 +23,7 @@ import io.swagger.annotations.Api;
 @RestController
 @RequestMapping("/taxpayerapi")
 @CrossOrigin
-@Api(value="OTP", description="OTP Generation")
+@Api(value="GSTR File", description="GSTR File Controller")
 public class GSTRFileController {
 	
 	@Autowired

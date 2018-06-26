@@ -29,7 +29,7 @@ import redis.clients.jedis.Jedis;
 @RestController
 @RequestMapping("/taxpayerapi")
 @CrossOrigin
-@Api(value="OTP", description="OTP Generation")
+@Api(value="Auth Extension", description="Auth Token Extension Controller")
 public class AuthTokenExtensionControllerNew {
 	
 	@Autowired

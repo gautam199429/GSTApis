@@ -26,7 +26,7 @@ import io.swagger.annotations.Api;
 @RestController
 @RequestMapping("/taxpayerapi")
 @CrossOrigin
-@Api(value="OTP", description="OTP Generation")
+@Api(value="EVC", description="EVC Otp Controller")
 public class GSTREVCOTPController {
 	
 	@Autowired

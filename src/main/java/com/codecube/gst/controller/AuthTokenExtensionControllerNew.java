@@ -44,6 +44,7 @@ public class AuthTokenExtensionControllerNew {
 	
 	private static final String BASE_URL = "https://apiuat.spicegsp.com/taxpayerapi/v0.2/authenticate";
 
+	@SuppressWarnings("unchecked")
 	@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@RequestMapping(value ="/authextension", method= RequestMethod.GET)

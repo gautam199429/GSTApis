@@ -58,6 +58,7 @@ public class GSTRSaveSubmitStatus {
 			@RequestHeader("GSTIN") String gstin,
 			@RequestHeader("ret_period") String ret_period) throws InvalidKeyException, IllegalBlockSizeException, BadPaddingException, IOException, Exception
 	{
+		@SuppressWarnings("unused")
 		String result = "{\"status_cd\":\"0\",\"error\":\"Please Check Your Headers\"}";
 		@SuppressWarnings("static-access")
 		String sek = red.redisGetsek(gstin);

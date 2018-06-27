@@ -12,6 +12,7 @@ com\codecube\gst\controller\AuthTokenControllerNew.class
 com\codecube\gst\important\GSTREVCOtp.class
 com\codecube\gst\entity\OTPModel.class
 com\codecube\gst\controller\GSTRFileController.class
+com\codecube\gst\controller\MyController.class
 com\codecube\gst\config\RedisConfig.class
 com\codecube\gst\entity\GSTRSubmitModel.class
 com\codecube\gst\config\HibernateConfig.class

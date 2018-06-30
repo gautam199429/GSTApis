@@ -46,6 +46,7 @@ private static final String BASE_URL = "https://apiuat.spicegsp.com/taxpayerapi/
 		try {
 			URL url = new URL(BASE_URL);
 			String pan1=""+pan+""+"|"+""+otp+"";
+			System.out.println("RETFILE"+pan1);
 			HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
 			String requestpayloadr ="{\"action\":\"RETFILE\",\"data\":\""+payload+"\",\"sign\":\""+sign+"\",\"st\":\"EVC\",\"sid\":\""+pan1+"\"}";
 			System.out.println(requestpayloadr);

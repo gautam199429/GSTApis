@@ -66,13 +66,23 @@ public class GSTRFileController {
 			String summery_status = (String) summery.get("status_cd");
 			if (summery_status.equals("1")) {
 				String data = (String) summery.get("data");
+				System.out.println("Summerydata" +data);
 				String rek = (String) summery.get("rek");
+				System.out.println("rek" +data);
 				@SuppressWarnings("static-access")
 				String decode = app.decodeData(data, rek, sek, appkey);
 				System.out.println(decode);
-				String encpayload = AESEncryption.encryptJson(decode, sek, appkey);
-				String pan1=""+pan+""+"|"+""+otp+"";
-				String sign = AESEncryption.generatHmacOfPayloda(pan1, sek, appkey);
+				@SuppressWarnings("static-access")
+				String encodedJson = app.encodeBase64String(decode.toString().getBytes());
+				System.out.println(encodedJson);
+				@SuppressWarnings("static-access")
+				String encpayload = app.encryptJson(decode, sek, appkey);
+				//Sign: hmac(base64encodedstring (summarypayoad), String2Byte(PAN|OTP))
+				String panotp =""+pan+""+"|"+""+otp+"";
+				@SuppressWarnings("static-access")
+				String encodepan = app.encodeBase64String(panotp.toString().getBytes());
+				@SuppressWarnings("static-access")
+				String sign = app.generateHmac(encodedJson, app.decodeBase64StringTOByte(encodepan));
 				JSONObject file = gstfile.gstrFile(sek, auth_token, appkey, asp_id, asp_secret, username, ip_usr, host, gstin, ret_period, state, txn, encpayload, sign, otp, pan);
 				return file;
 			} else {

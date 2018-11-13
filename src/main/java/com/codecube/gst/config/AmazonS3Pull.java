@@ -16,9 +16,9 @@ import com.codecube.gst.entity.GSTR1Model;
 
 
 public class AmazonS3Pull {
-	public final static String accessKeyID = "AKIAIJEN6SVLTY36AAAA";
-	public final static String secretKey = "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";
-	public final static String bucketName = "codecubegst";
+	public final static String accessKeyID = "";
+	public final static String secretKey = "";
+	public final static String bucketName = "";
 	
 	static AWSCredentials credentials = new BasicAWSCredentials(
 			  accessKeyID, 

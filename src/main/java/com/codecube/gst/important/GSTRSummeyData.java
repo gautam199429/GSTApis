@@ -66,15 +66,15 @@ AESEncryption app;
 						JSONObject json = (JSONObject) parser1.parse(result);
 						String status_cd = (String) json.get("status_cd");
 						if (status_cd.equals("1")) {
-							return json;
-//							String data = (String) json.get("data");
-//							String rek = (String) json.get("rek");
-//							@SuppressWarnings("static-access")
-//							String decode = app.decodeData(data, rek, sek, appkey);
-//							System.out.println("decode data"+decode);
+							//
+							String data = (String) json.get("data");
+							String rek = (String) json.get("rek");
+							@SuppressWarnings("static-access")
+							String decode = app.decodeData(data, rek, sek, appkey);
+							System.out.println("decode data"+decode);
 //							JSONParser decodeparser = new JSONParser();
 //							JSONObject decodedjson = (JSONObject) decodeparser.parse(decode);
-//							return decodedjson;	
+							return json;
 						}
 						else
 						{

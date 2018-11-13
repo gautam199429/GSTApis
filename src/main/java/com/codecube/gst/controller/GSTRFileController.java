@@ -76,19 +76,20 @@ public class GSTRFileController {
 				@SuppressWarnings("static-access")
 				String decode = app.decodeData(data, rek, sek, appkey);
 				System.out.println(decode);
-				@SuppressWarnings("static-access")
-				String encodedJson = app.encodeBase64String(decode.toString().getBytes());
-				System.out.println(encodedJson);
-				@SuppressWarnings("static-access")
-				String encpayload = app.encryptJson(decode, sek, appkey);
-				//Sign: hmac(base64encodedstring (summarypayoad), String2Byte(PAN|OTP))
-				String panotp =""+pan+""+"|"+""+otp+"";
-				@SuppressWarnings("static-access")
-				String encodepan = app.encodeBase64String(panotp.toString().getBytes());
-				@SuppressWarnings("static-access")
-				String sign = app.generateHmac(encodedJson, app.decodeBase64StringTOByte(encodepan));
-				JSONObject file = gstfile.gstrFile(sek, auth_token, appkey, asp_id, asp_secret, username, ip_usr, host, gstin, ret_period, state, txn, encpayload, sign, otp, pan);
-				return file;
+				return summery;
+//				@SuppressWarnings("static-access")
+//				String encodedJson = app.encodeBase64String(decode.toString().getBytes());
+//				System.out.println(encodedJson);
+//				@SuppressWarnings("static-access")
+//				String encpayload = app.encryptJson(decode, sek, appkey);
+//				//Sign: hmac(base64encodedstring (summarypayoad), String2Byte(PAN|OTP))
+//				String panotp =""+pan+""+"|"+""+otp+"";
+//				@SuppressWarnings("static-access")
+//				String encodepan = app.encodeBase64String(panotp.toString().getBytes());
+//				@SuppressWarnings("static-access")
+//				String sign = app.generateHmac(encodedJson, app.decodeBase64StringTOByte(encodepan));
+//				JSONObject file = gstfile.gstrFile(sek, auth_token, appkey, asp_id, asp_secret, username, ip_usr, host, gstin, ret_period, state, txn, encpayload, sign, otp, pan);
+//				return file;
 			} else {
 				return summery;
 			}

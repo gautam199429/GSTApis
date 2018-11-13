@@ -68,26 +68,26 @@ private static final String BASE_URL = "https://apiuat.spicegsp.com/taxpayerapi/
 			 conn.setDoOutput(true);
 			 conn.setDoInput(true);
 			 DataOutputStream wr = new DataOutputStream(conn.getOutputStream());
-			 System.out.println("outputstream1");
+			 
 			 wr.write(out);
-			 System.out.println("outputstream2");
+			
 			 wr.flush();
-			 System.out.println("outputstream3");
+			 
 			 wr.close();
 //			 conn.connect();
-			 System.out.println("outputstream4");
+			 
 			 BufferedReader in = new BufferedReader(
 					 new InputStreamReader(conn.getInputStream()));
 						String inputLine;
 						StringBuffer response = new StringBuffer();
 						while ((inputLine = in.readLine()) != null) {
 							response.append(inputLine);
-							System.out.println("outputstream5");
+							
 						}
 						in.close();
 						result =response.toString();
 						JSONParser parser1 = new JSONParser();
-						System.out.println("outputstream6");
+						
 						JSONObject json = (JSONObject) parser1.parse(result);
 						String status_cd = (String) json.get("status_cd");
 						if (status_cd.equals("1")) {

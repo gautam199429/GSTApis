@@ -19,6 +19,7 @@ import com.codecube.gst.important.GSTRSummeyData;
 import com.codecube.gst.utility.AESEncryption;
 
 import io.swagger.annotations.Api;
+import redis.clients.jedis.Jedis;
 
 @RestController
 @RequestMapping("/taxpayerapi")
@@ -42,8 +43,8 @@ public class GSTRFileController {
 	@Produces(MediaType.APPLICATION_JSON)
 	@RequestMapping(value ="/retfile", method= RequestMethod.GET)
 	public JSONObject OtpRequest(
-			@RequestHeader("Asp-Id") String asp_id,
-			@RequestHeader("Asp-Secret") String asp_secret,
+			@RequestHeader("clientid") String asp_id,
+			@RequestHeader("client-secret") String asp_secret,
 			@RequestHeader("state-cd") String state,
 			@RequestHeader("ip-usr") String ip_usr,
 			@RequestHeader("host") String host,
@@ -55,6 +56,9 @@ public class GSTRFileController {
 			@RequestHeader("pan") String pan)throws Exception
 	{
 		String result = "{\"status_cd\":\"0\",\"error\":\"Please Check Your Headers\"}";
+		
+		Jedis jedis = new Jedis("localhost",6379);
+		
 		@SuppressWarnings("static-access")
 		String sek = red.redisGetsek(gstin);
 		@SuppressWarnings("static-access")

@@ -38,13 +38,13 @@ AESEncryption app;
 	{
 		String result = "{\"status_cd\":\"0\",\"error\":\"Please Check Your Headerssssss\"}";
 		try {
-			URL url = new URL("https://apiuat.spicegsp.com/taxpayerapi/v1.0/returns/gstr1?gstin="+gstin+"&ret_period="+ret_period+"&action=RETSUM");
+			URL url = new URL("https://devapi.gst.gov.in/taxpayerapi/v0.3/returns/gstr1?gstin="+gstin+"&ret_period="+ret_period+"&action=RETSUM");
 			System.out.println(url);
 			HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			 conn.setRequestProperty("Content-Type",javax.ws.rs.core.MediaType.APPLICATION_JSON );
-			 conn.setRequestProperty("Asp-Id", asp_id);
-			 conn.setRequestProperty("Asp-Secret", asp_secret);
+			 conn.setRequestProperty("clientid", asp_id);
+			 conn.setRequestProperty("client-secret", asp_secret);
 			 conn.setRequestProperty("state-cd", state_cd);
 			 conn.setRequestProperty("txn", txns);
 			 conn.setRequestProperty("ip-usr", ip_usr);;

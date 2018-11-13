@@ -3,22 +3,24 @@ package com.codecube.gst.important;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+
 import javax.net.ssl.HttpsURLConnection;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import com.codecube.gst.utility.AESEncryption;
 
 @Repository
-public class GSTRCheckStatus {
-	
+public class GSTR1Invoice {
 	
 	@Autowired
 	AESEncryption app;
 	
-	public JSONObject gstCheckStatus(
+	public JSONObject gstr1Invoice(
 			String sek,
 			String auth_token,
 			String appkey,
@@ -31,18 +33,18 @@ public class GSTRCheckStatus {
 			String ret_period,
 			String state_cd,
 			String txns,
-			String ref_id) throws ParseException
+			String action) throws ParseException
 	{
 		
 		String result = "{\"status_cd\":\"0\",\"error\":\"Please Check Your Headerssssss\"}";
 		try {
-			URL url = new URL("https://devapi.gst.gov.in/taxpayerapi/v1.0/returns?gstin="+gstin+"&ret_period="+ret_period+"&action=RETSTATUS&ref_id="+ref_id+"");
+			URL url = new URL("https://api.spicegsp.com/taxpayerapi/v0.3/returns/gstr1?gstin="+gstin+"&ret_period="+ret_period+"&action="+action+"");
 			System.out.println(url);
 			HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			 conn.setRequestProperty("Content-Type",javax.ws.rs.core.MediaType.APPLICATION_JSON );
-			 conn.setRequestProperty("clientid", asp_id);
-			 conn.setRequestProperty("client-secret", asp_secret);
+			 conn.setRequestProperty("Asp-Id", asp_id);
+			 conn.setRequestProperty("Asp-Secret", asp_secret);
 			 conn.setRequestProperty("state-cd", state_cd);
 			 conn.setRequestProperty("txn", txns);
 			 conn.setRequestProperty("ip-usr", ip_usr);;
@@ -62,6 +64,7 @@ public class GSTRCheckStatus {
 						result =response.toString();
 						JSONParser parser1 = new JSONParser();
 						JSONObject json = (JSONObject) parser1.parse(result);
+						System.out.println(json);
 						String status_cd = (String) json.get("status_cd");
 						if (status_cd.equals("1")) {
 							String data = (String) json.get("data");
@@ -71,9 +74,12 @@ public class GSTRCheckStatus {
 							System.out.println(decode);
 							JSONParser decodeparser = new JSONParser();
 							JSONObject decodedjson = (JSONObject) decodeparser.parse(decode);
+							decodedjson.put("gstin", gstin);
+							decodedjson.put("fp", ret_period);
 							return decodedjson;
 							
 						} else {
+							System.out.println(json);
 							return json;
 						}
 			

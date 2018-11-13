@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.codecube.gst.config.RedisConfig;
 
 import io.swagger.annotations.Api;
+import redis.clients.jedis.Jedis;
 
 @RestController
 @RequestMapping("/taxpayerapi")
@@ -51,17 +52,19 @@ public class GSTREVCOTPController {
 	
 	{
 		String result = "{\"status_cd\":\"0\",\"error\":\"Please Check Your Headers\"}";
+		Jedis jedis = new Jedis("localhost",6379);
+		
 		@SuppressWarnings("static-access")
 		String auth_token = red.redisGetauthtoken(gstin);
 		try {
-			URL url = new URL("https://apiuat.spicegsp.com/taxpayerapi/v1.0/authenticate?gstin="+gstin+"&action=EVCOTP&pan="+pan+"&form_type="+form_type+"");
+			URL url = new URL(" https://devapi.gst.gov.in/taxpayerapi/v1.0/authenticate?gstin="+gstin+"&action=EVCOTP&pan="+pan+"&form_type="+form_type+"");
 //			https://apiuat.spicegsp.com/taxpayerapi/v1.0/authenticate?gstin=27BABMH5613A1ZJ&action=EVCOTP&pan=AHWPB0871H&form_type=R1
 			System.out.println(url);
 			HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			 conn.setRequestProperty("Content-Type",javax.ws.rs.core.MediaType.APPLICATION_JSON );
-			 conn.setRequestProperty("Asp-Id", asp_id);
-			 conn.setRequestProperty("Asp-Secret", asp_secret);
+			 conn.setRequestProperty("clientid", asp_id);
+			 conn.setRequestProperty("client-secret", asp_secret);
 			 conn.setRequestProperty("state-cd", state);
 			 conn.setRequestProperty("txn", txn);
 			 conn.setRequestProperty("ip-usr", ip_usr);;

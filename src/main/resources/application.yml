@@ -1,0 +1,68 @@
+AbstractUserDetailsAuthenticationProvider:
+  onlySupports: testing
+com:
+  codecube:
+    dateformat: dd MMM yyyy, hh:mm:ss a
+db:
+  driver: com.mysql.jdbc.Driver
+  password: gautam
+  url: jdbc:mysql://localhost:3306/datagst
+  username: root
+entitymanager:
+  packagesToScan: com.codecube
+hibernate:
+  dialect: org.hibernate.dialect.MySQL5Dialect
+  hbm2ddl:
+    auto: update
+  show_sql: 'true'
+  version: 5.2.12.Final
+logging:
+  level:
+    com:
+      comviva:
+        roadmap:
+          i18n: FATAL
+    javax: ERROR
+    org:
+      apache: ERROR
+      hibernate: ERROR
+      springframework:
+        boot:
+          spring-boot-starter-data-redis: ERROR
+    redis:
+      clients: ERROR
+server:
+  error:
+    include-stacktrace: always
+  port: '8060'
+spring:
+  datasource:
+    testWhileIdle: 'true'
+    tomcat:
+      initial-size: '10'
+      max-active: '20'
+      max-idle: '10'
+      min-idle: '2'
+      test-on-borrow: 'true'
+    validationQuery: 'SELECT 1 '
+  jackson:
+    serialization:
+      fail-on-empty-beans: 'false'
+  jpa:
+    hibernate:
+      ddl-auto: none
+      enable_lazy_load_no_trans: 'true'
+    properties:
+      hibernate:
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+        dialect: org.hibernate.dialect.MySQL5Dialect
+        format_sql: 'true'
+    show-sql: 'true'
+    use-sql-comments: 'true'
+  mail:
+    default-encoding: UTF-8
+    host: smtp.gmail.com
+    password: $p!ce@1234
+    port: '465'
+    test-connection: 'false'
+    username: gst@spicedigital.in

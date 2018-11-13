@@ -7,9 +7,10 @@ public class BaseUrls {
 	
 	//public String AUTENTICATION_URL = "https://apiuat.spicegsp.com/taxpayerapi/v0.2/authenticate";
 	//public String GSTR1_URL = "https://apiuat.spicegsp.com/taxpayerapi/v1.0/returns/gstr1";
-	public String getAUTENTICATION_URL() {
-		String baseurl = "https://apiuat.spicegsp.com/taxpayerapi/v0.2/authenticate";
-		return baseurl;
+	public static String getAUTENTICATION_URL() {
+		String authenticate = "https://apiuat.spicegsp.com/taxpayerapi/v0.2/authenticate";
+		//String authenticate = "https://api.spicegsp.com/taxpayerapi/v0.2/authenticate";
+		return null;
 	}	
 	/**
 	 * Production URLS

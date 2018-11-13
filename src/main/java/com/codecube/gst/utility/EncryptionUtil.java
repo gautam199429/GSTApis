@@ -32,7 +32,8 @@ public class EncryptionUtil {
 	/**
 	 * FOR LINUX DEPLOYMENT
 	 */
-	//public static String publicKeyUrl1 ="/home/software/GSTN_G2A_SANDBOX_UAT_public.cer";
+//	public static String publicKeyUrl1 ="/home/software/GSTN_G2A_SANDBOX_UAT_public.cer";
+	//public static String publicKeyUrl1 ="D:/software/GSTN_G2B_Prod_Public.cer";
 	/**
 	 * GSTN Production Key
 	 * @ExpireyDate 02/08/2018

@@ -22,7 +22,7 @@ import com.codecube.gst.utility.AESEncryption;
 @Repository
 public class GSTRSubmit {
 	
-	private static final String BASE_URL = "https://apiuat.spicegsp.com/taxpayerapi/v1.0/returns/gstr1";
+	private static final String BASE_URL = "https://devapi.gst.gov.in/taxpayerapi/v0.3/returns/gstr1";
 	
 	@Autowired
 	AESEncryption app;
@@ -60,8 +60,8 @@ public class GSTRSubmit {
 			byte[] out = requestpayloadr.getBytes(StandardCharsets.UTF_8);
 			conn.setRequestMethod("POST");
 			 conn.setRequestProperty("Content-Type",javax.ws.rs.core.MediaType.APPLICATION_JSON );
-			 conn.setRequestProperty("Asp-Id", asp_id);
-			 conn.setRequestProperty("Asp-Secret", asp_secret);
+			 conn.setRequestProperty("clientid", asp_id);
+			 conn.setRequestProperty("client-secret", asp_secret);
 			 conn.setRequestProperty("state-cd", state_cd);
 			 conn.setRequestProperty("txn", txns);
 			 conn.setRequestProperty("ip-usr", ip_usr);;

@@ -1,0 +1,77 @@
+{"properties": [
+  {
+    "name": "spring.jpa.hibernate.enable_lazy_load_no_trans",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.jpa.hibernate.enable_lazy_load_no_trans'"
+  },
+  {
+    "name": "spring.jpa.use-sql-comments",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.jpa.use-sql-comments'"
+  },
+  {
+    "name": "spring.datasource.validation-query",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.validation-query'"
+  },
+  {
+    "name": "Abstract-user-details-authentication-provider.only-supports",
+    "type": "java.lang.String",
+    "description": "A description for 'Abstract-user-details-authentication-provider.only-supports'"
+  },
+  {
+    "name": "com.codecube.dateformat",
+    "type": "java.lang.String",
+    "description": "A description for 'com.codecube.dateformat'"
+  },
+  {
+    "name": "db.driver",
+    "type": "java.lang.String",
+    "description": "A description for 'db.driver'"
+  },
+  {
+    "name": "db.password",
+    "type": "java.lang.String",
+    "description": "A description for 'db.password'"
+  },
+  {
+    "name": "db.url",
+    "type": "java.lang.String",
+    "description": "A description for 'db.url'"
+  },
+  {
+    "name": "db.username",
+    "type": "java.lang.String",
+    "description": "A description for 'db.username'"
+  },
+  {
+    "name": "entitymanager.packages-to-scan",
+    "type": "java.lang.String",
+    "description": "A description for 'entitymanager.packages-to-scan'"
+  },
+  {
+    "name": "hibernate.dialect",
+    "type": "java.lang.String",
+    "description": "A description for 'hibernate.dialect'"
+  },
+  {
+    "name": "hibernate.hbm2ddl.auto",
+    "type": "java.lang.String",
+    "description": "A description for 'hibernate.hbm2ddl.auto'"
+  },
+  {
+    "name": "hibernate.show_sql",
+    "type": "java.lang.String",
+    "description": "A description for 'hibernate.show_sql'"
+  },
+  {
+    "name": "hibernate.version",
+    "type": "java.lang.String",
+    "description": "A description for 'hibernate.version'"
+  },
+  {
+    "name": "spring.datasource.test-while-idle",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.test-while-idle'"
+  }
+]}

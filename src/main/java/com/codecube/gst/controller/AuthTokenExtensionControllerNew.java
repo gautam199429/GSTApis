@@ -42,15 +42,15 @@ public class AuthTokenExtensionControllerNew {
 	RedisConfig red;
 	
 	
-	private static final String BASE_URL = "https://apiuat.spicegsp.com/taxpayerapi/v0.2/authenticate";
+	private static final String BASE_URL = " https://devapi.gst.gov.in/taxpayerapi/v0.2/authenticate";
 
 	@SuppressWarnings("unchecked")
 	@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@RequestMapping(value ="/authextension", method= RequestMethod.GET)
 	public JSONObject authExtensionRequest(
-			@RequestHeader("Asp-Id") String asp_id,
-			@RequestHeader("Asp-Secret") String asp_secret,
+			@RequestHeader("clientid") String asp_id,
+			@RequestHeader("client-secret") String asp_secret,
 			@RequestHeader("state-cd") String state,
 			@RequestHeader("ip-usr") String ip_usr,
 			@RequestHeader("host") String host,
@@ -83,8 +83,8 @@ public class AuthTokenExtensionControllerNew {
 				 byte[] out = requestpayload.getBytes(StandardCharsets.UTF_8);
 				 conn.setRequestMethod("POST");
 				 conn.setRequestProperty("Content-Type",javax.ws.rs.core.MediaType.APPLICATION_JSON );
-				 conn.setRequestProperty("Asp-Id", asp_id);
-				 conn.setRequestProperty("Asp-Secret", asp_secret);
+				 conn.setRequestProperty("clientid", asp_id);
+				 conn.setRequestProperty("client-secret", asp_secret);
 				 conn.setRequestProperty("state-cd", state);
 				 conn.setRequestProperty("txn", txn);
 				 conn.setRequestProperty("ip-usr", ip_usr);;

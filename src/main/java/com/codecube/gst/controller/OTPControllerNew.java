@@ -13,12 +13,16 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ws.server.endpoint.annotation.RequestPayload;
+
 import redis.clients.jedis.Jedis; 
 import com.codecube.gst.config.RedisConfig;
+import com.codecube.gst.entity.GSTR1Model;
 import com.codecube.gst.utility.AESEncryption;
 import com.codecube.gst.utility.EncryptionUtil;
 import io.swagger.annotations.Api;
@@ -33,20 +37,23 @@ public class OTPControllerNew {
 	RedisConfig red;
 	
 	
+//	@Autowired
+//	GSTR1Model gstr;
+	
 	@Autowired
 	AESEncryption app;
 	
 	@Autowired
 	EncryptionUtil encutil;
 	
-	private static final String BASE_URL = "https://apiuat.spicegsp.com/taxpayerapi/v0.2/authenticate";
+	private static final String BASE_URL = " https://devapi.gst.gov.in/taxpayerapi/v0.2/authenticate";
 	
 	@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@RequestMapping(value ="/otprequest", method= RequestMethod.GET)
 	public JSONObject OtpRequest(
-			@RequestHeader("Asp-Id") String asp_id,
-			@RequestHeader("Asp-Secret") String asp_secret,
+			@RequestHeader("clientid") String asp_id,
+			@RequestHeader("client-secret") String asp_secret,
 			@RequestHeader("state-cd") String state,
 			@RequestHeader("ip-usr") String ip_usr,
 			@RequestHeader("host") String host,
@@ -75,8 +82,8 @@ public class OTPControllerNew {
 			byte[] out = requestpayloadr.getBytes(StandardCharsets.UTF_8);
 			conn.setRequestMethod("POST");
 			 conn.setRequestProperty("Content-Type",javax.ws.rs.core.MediaType.APPLICATION_JSON );
-			 conn.setRequestProperty("Asp-Id", asp_id);
-			 conn.setRequestProperty("Asp-Secret", asp_secret);
+			 conn.setRequestProperty("clientid", asp_id);
+			 conn.setRequestProperty("client-secret", asp_secret);
 			 conn.setRequestProperty("state-cd", state);
 			 conn.setRequestProperty("txn", txn);
 			 conn.setRequestProperty("ip-usr", ip_usr);;
